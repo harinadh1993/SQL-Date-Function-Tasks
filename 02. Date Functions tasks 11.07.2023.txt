@@ -1,0 +1,42 @@
+Total - 12, Completed - 11, Pending - 1, Starred - 2
+
+Date Functions tasks
+how to display the next month first day date
+A. SELECT DATE_TRUNC('MONTH', DATEADD(month, 1, current_date())) AS NextMonthFirstDay;
+
+how to display the next year  first month first date
+A. SELECT DATE_TRUNC('YEAR', DATEADD(Year, 1, current_date()));
+
+how to get the data for every 10th day data each month
+A. SELECT * FROM SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.ORDERS WHERE DAY(O_ORDERDATE) = 10;
+
+how to get the may month data each year
+A. SELECT * FROM SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.ORDERS WHERE MONTH(O_ORDERDATE) = 5;
+
+how to get the data 2021 year
+A. SELECT * FROM Orders WHERE EXTRACT(YEAR FROM oder_date) = 2021;
+
+how to caluclate employee experience with years and days
+how to get the data from previous month start date to current date
+A. SELECT DATE_TRUNC(month, dateadd(month, -1, current_date())) AS Start_date, current_date();
+
+how to get the last day of previous month
+A. SELECT last_day(dateadd(month, -1, current_date()));
+
+how to get the age from dob to current date (*****)
+A. SELECT DATEDIFF(YEAR,'1992-07-29', CURRENT_DATE()) AS AgeYears;
+
+how to get the last date from last year (*****)
+A. SELECT DATE_TRUNC('YEAR', CURRENT_DATE() - INTERVAL '1 YEAR') - INTERVAL '1 DAY' AS LastDateLastYear;
+
+how to get the first day and last day from current month
+A. SELECT DATE_TRUNC('MONTH', CURRENT_DATE()) AS FirstDayOfMonth, DATEADD(DAY, -1, DATEADD(MONTH, 1, DATE_TRUNC('MONTH', CURRENT_DATE()))) AS LastDayOfMonth;
+
+how to get the orders from 1st jan 2022 to 31st may 2022
+A. SELECT * FROM orders WHERE oder_date BETWEEN DATE('2022-01-01') AND DATE('2022-05-31');
+
+create table orders(order_id number,order_amount number,product_name varchar,order_date date,ship_date date,delivery_date date);
+
+insert into orders values(10001,10000,'Realme8',current_timestamp(),dateadd(day,2,current_timestamp()),dateadd(day,4,current_timestamp()));
+
+insert into orders values(10001,20000,'Oneplus','2022-01-04 07:20:33',dateadd(day,2,'2022-01-06 07:20:33'),dateadd(day,4,'2022-01-08 07:20:33'));
